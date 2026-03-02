@@ -3,8 +3,8 @@ import java.util.List;
 
 public class IDAStar {
     private int nodosExpandidos;
-    private long tiempoInicio;
-    private boolean usarConflictoLineal;
+
+    private final boolean usarConflictoLineal;
 
     public IDAStar(boolean usarConflictoLineal) {
         this.usarConflictoLineal = usarConflictoLineal;

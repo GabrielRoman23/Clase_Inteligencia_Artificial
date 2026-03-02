@@ -1,8 +1,10 @@
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class Estado {
+
     public byte[] tablero;
     public int posVacio;
 
@@ -45,13 +47,16 @@ public class Estado {
                     int valA = tablero[fila * 5 + i];
                     int valB = tablero[fila * 5 + j];
                     if (valA != 0 && valB != 0 && (valA - 1) / 5 == fila && (valB - 1) / 5 == fila) {
-                        if (valA > valB) conflictos++; // Están en la fila correcta pero invertidos
+                        if (valA > valB) {
+                            conflictos++; // Están en la fila correcta pero invertidos
+
+                        }
                     }
                 }
             }
         }
         // Cada conflicto requiere al menos 2 movimientos extra para esquivarse
-        return heuristica + (2 * conflictos); 
+        return heuristica + (2 * conflictos);
     }
 
     // Genera los sucesores válidos intercambiando el espacio vacío (0)
@@ -83,15 +88,26 @@ public class Estado {
     public boolean esObjetivo() {
         // El objetivo es 1,2,3...24,0
         for (int i = 0; i < 24; i++) {
-            if (tablero[i] != i + 1) return false;
+            if (tablero[i] != i + 1) {
+                return false;
+            }
         }
         return tablero[24] == 0;
     }
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj) return true;
-        if (!(obj instanceof Estado)) return false;
+        if (this == obj) {
+            return true;
+        }
+        if (!(obj instanceof Estado)) {
+            return false;
+        }
         return Arrays.equals(this.tablero, ((Estado) obj).tablero);
+    }
+
+    @Override
+    public int hashCode() {
+        return Arrays.hashCode(this.tablero);
     }
 }
