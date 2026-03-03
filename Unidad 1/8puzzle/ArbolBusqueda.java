@@ -102,6 +102,7 @@ public class ArbolBusqueda {
     }
 
     public Nodo busquedaAEstrella(String estadoObjetivo) {
+        
         if (raiz == null) {
             return null;
         }
@@ -109,7 +110,6 @@ public class ArbolBusqueda {
         nodosExpandidos = 0; 
 
         PriorityQueue<Nodo> frontera = new PriorityQueue<>();
-        // Usamos un mapa para registrar el mejor costo (g) para cada estado
         HashMap<String, Integer> costosMejores = new HashMap<>();
 
         raiz.costo = 0;
